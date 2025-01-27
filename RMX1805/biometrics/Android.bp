@@ -1,0 +1,33 @@
+cc_defaults {
+    name: "fingerprint_service_RMX1805_defaults",
+    defaults: ["hidl_defaults"],
+    relative_install_path: "hw",
+    srcs: [
+        "BiometricsFingerprint.cpp",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libcutils",
+        "liblog",
+        "libhidlbase",
+        "libhardware",
+        "libutils",
+        "android.hardware.biometrics.fingerprint@2.1",
+    ],
+    vendor: true,
+}
+
+cc_binary {
+    name: "android.hardware.biometrics.fingerprint@2.1-service.RMX1805",
+    defaults: ["fingerprint_service_RMX1805_defaults"],
+    init_rc: ["android.hardware.biometrics.fingerprint@2.1-service.RMX1805.rc"],
+    vintf_fragments: ["android.hardware.biometrics.fingerprint@2.1-service.RMX1805.xml"],
+}
+
+cc_binary {
+    name: "android.hardware.biometrics.fingerprint@2.1-service.RMX1805-32",
+    defaults: ["fingerprint_service_RMX1805_defaults"],
+    compile_multilib: "32",
+    init_rc: ["android.hardware.biometrics.fingerprint@2.1-service.RMX1805-32.rc"],
+    vintf_fragments: ["android.hardware.biometrics.fingerprint@2.1-service.RMX1805-32.xml"],
+}
